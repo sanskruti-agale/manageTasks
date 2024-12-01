@@ -1,0 +1,40 @@
+ 
+.centered-text {
+  display: flex;
+  background-color: #b32209;
+  color: #fff;
+  padding: 10px;
+  border-radius: 8px 8px 0 0;
+  justify-content: space-between;
+  font-weight: 300px;
+  font-size: 18px;
+  padding-left: 10px !important;
+}
+
+.heading-text{
+  margin-top: 10px !important;
+}
+.mid-data{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 135px !important;
+}
+
+
+  ::ng-deep .mat-dialog-container {
+    border-radius: 12px; /* Apply rounded corners */
+  }
+  .dialog-content {
+    flex: 1; /* Pushes footer to the bottom */
+    padding: 16px;
+    text-align: center;
+  }
+  .dialog-footer {
+    display: flex;
+    justify-content: flex-end !important; /* Buttons aligned to the right */
+    gap: 12px;
+    padding: 4px;
+    border-top: 1px solid #ccc;
+    background-color: #f9f9f9; /* Matches the header background */
+  }

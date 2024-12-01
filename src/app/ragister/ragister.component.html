@@ -1,0 +1,63 @@
+<div class="register-container">
+  <div class="flex">
+    <div> <img src="assets/logo.png" alt="Workstatus Logo" class="logo" /></div>
+ <div> <h2>Register</h2></div>
+</div>
+  <form [formGroup]="registerForm" (ngSubmit)="validateAndSubmit()">
+    <!-- Name Field -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Name</mat-label>
+      <input matInput type="text" formControlName="name" />
+      <mat-error *ngIf="nameControl?.invalid && (nameControl?.touched || formSubmitted)">
+        <span *ngIf="nameControl?.errors?.['required']">Name is required</span>
+        <span *ngIf="nameControl?.errors?.['minlength']">Name must be at least 3 characters</span>
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Email Field -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" formControlName="email" />
+      <mat-error *ngIf="emailControl?.invalid && (emailControl?.touched || formSubmitted)">
+        <span *ngIf="emailControl?.errors?.['required']">Email is required</span>
+        <span *ngIf="emailControl?.errors?.['email']">Enter a valid email address</span>
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Password Field -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" formControlName="password" />
+      <mat-error *ngIf="passwordControl?.invalid && (passwordControl?.touched || formSubmitted)">
+        <span *ngIf="passwordControl?.errors?.['required']">Password is required</span>
+        <span *ngIf="passwordControl?.errors?.['minlength']">Password must be at least 6 characters</span>
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Confirm Password Field -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Confirm Password</mat-label>
+      <input matInput type="password" formControlName="confirmPassword" />
+      <mat-error *ngIf="confirmPasswordControl?.invalid && (confirmPasswordControl?.touched || formSubmitted)">
+        <span *ngIf="confirmPasswordControl?.errors?.['required']">Confirm Password is required</span>
+        <span *ngIf="registerForm.errors?.['passwordMismatch']">Passwords do not match</span>
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Register Button -->
+    <button
+      mat-raised-button
+      color="primary"
+      class="full-width"
+      type="submit"
+      [disabled]="registerForm.invalid"
+    >
+      Register
+    </button>
+
+    <!-- Options Link -->
+    <div class="options">
+      <a routerLink="/login">Back to Login</a>
+    </div>
+  </form>
+</div>

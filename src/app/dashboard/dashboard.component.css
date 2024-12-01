@@ -1,0 +1,201 @@
+/* Responsive Navbar */
+.dashboard-navbar {
+    display: flex;
+    background-color: #4187d2;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Ensures wrapping on small screens */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  
+  .navbar-left {
+    display: flex;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .navbar-right button {
+    margin-left: 10px;
+  }
+  
+  /* Task Status Cards Layout */
+ /* Task Status Cards Layout */
+.status-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px; /* Decrease the gap between the cards */
+    justify-content: space-between;
+    margin-top: 100px; /* Add margin-top to push cards below navbar */
+    padding-left: 16px;  /* Add padding to the left */
+    padding-right: 16px; /* Add padding to the right */
+  }
+  
+  
+  .status-card {
+    flex: 1 1 calc(20% - 16px); /* Flexible layout for cards */
+    min-width: 160px;
+    max-width: 200px;
+    text-align: center;
+    padding: 14px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  }
+  
+  /* Hover effects for all cards */
+  .status-card:hover {
+    transform: scale(1.05); /* Slightly increase size on hover */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Stronger shadow */
+  }
+  
+  /* Specific background colors for each task card */
+  .delayed-card {
+    background-color: rgba(255, 255, 0, 0.2); /* Light yellow */
+  }
+  
+  .pending-card {
+    background-color: rgba(252, 236, 217, 0.5); /* Faint #FCECD9 color */
+  }
+  
+  .continue-card {
+    background-color: rgba(173, 216, 230, 0.5); /* Light blue */
+  }
+  
+  .completed-card {
+    background-color: rgba(144, 238, 144, 0.5); /* Light green */
+  }
+  
+  .deleted-card {
+    background-color: rgba(255, 99, 71, 0.2); /* Light red */
+  }
+  
+  /* Task List */
+  .task-list {
+    margin-top: 30px;
+     padding-left: 16px;  /* Add padding to the left */
+    padding-right: 16px;
+  }
+  
+  .task-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .task-details span {
+    font-size: 16px;
+  }
+  
+  .task-timer {
+    font-size: 14px;
+    color: gray;
+  }
+  
+  /* Task Actions */
+  .task-actions button {
+    margin-left: 8px;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .status-cards {
+      flex-direction: column;
+    }
+  
+    .status-card {
+      flex: 1 1 100%;
+      margin-bottom: 10px;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .dashboard-navbar {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .navbar-right button {
+      margin: 5px 0;
+    }
+  }
+  /* Task List */
+.task-list {
+    margin-top: 30px;
+  }
+  
+  .task-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    border-bottom: 1px solid #e0e0e0;
+    border-radius: 8px; /* To match rounded corners of cards */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+  }
+  
+  /* Specific background colors for each task item */
+  .task-item.delayed {
+    background-color: rgba(255, 255, 0, 0.1); /* Light yellow */
+  }
+  
+  .task-item.pending {
+    background-color: rgba(252, 236, 217, 0.3); /* Faint #FCECD9 color */
+  }
+  
+  .task-item.continue {
+    background-color: rgba(173, 216, 230, 0.3); /* Light blue */
+  }
+  
+  .task-item.completed {
+    background-color: rgba(144, 238, 144, 0.3); /* Light green */
+  }
+  
+  .task-item.deleted {
+    background-color: rgba(255, 99, 71, 0.1); /* Light red */
+  }
+  
+  .task-details span {
+    font-size: 16px;
+  }
+  
+  .task-timer {
+    margin-left: 10px !important;
+    font-size: 14px;
+    color: rgb(0, 0, 0);
+  }
+  
+  /* Task Actions */
+  .task-actions button {
+    margin-left: 8px;
+  }
+  .blink {
+    animation: blink-animation 1s linear;
+  }
+  
+  @keyframes blink-animation {
+    0% {
+      background-color: #ded054; /* Highlight color (yellow) */
+    }
+    50% {
+      background-color: #ffffff; /* Default background color */
+    }
+    80% {
+      background-color: #fef181; /* Highlight color (yellow) */
+    }
+  }
+
+  .navbar-logo {
+    height: 50px; /* Adjust the height for a smaller logo */
+    margin-right: 8px; /* Space between the logo and text */
+  }
+  
+  

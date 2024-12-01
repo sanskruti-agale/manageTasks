@@ -1,0 +1,86 @@
+.register-container {
+  width: 100%;
+  max-width: 400px;  /* Set the maximum width for the form */
+  margin: 50px auto;  /* Centers the form horizontally and adds top margin */
+  padding: 20px 30px;  /* Padding around the form */
+  border: 1px solid #ccc;
+  border-radius: 8px;  /* Rounded corners */
+  background-color: #f9f9f9;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);  /* Subtle shadow */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px; /* Ensures form stays in the middle */
+}
+
+h2 {
+  color: #4187d2;
+  margin-bottom: 18px;
+  font-size: 24px;  /* Font size for the heading */
+}
+
+mat-form-field {
+  width: 100%;  /* Ensure fields are 100% of the container width */
+  margin-bottom: 10px;  /* Spacing between fields */
+}
+
+button {
+  width: 100%;  /* Full width button */
+  background-color: #4187d2;
+  color: white;
+  font-size: 16px;
+  padding: 12px;
+  border-radius: 4px;
+  margin-top: 20px;
+}
+
+button:disabled {
+  background-color: #ddd;
+  color: #888;
+}
+
+.options {
+  margin-top: 10px;
+  text-align: right;
+}
+
+a {
+  color: #4187d2;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .register-container {
+    width: 90%;  /* Allow the form to take up 90% of the screen width on mobile */
+    padding: 20px;  /* Reduce padding for mobile screens */
+    min-height: auto; /* Remove the minimum height on small screens */
+  }
+
+  h2 {
+    font-size: 20px;  /* Slightly smaller heading */
+  }
+
+  button {
+    font-size: 14px;  /* Adjust button font size */
+  }
+}
+.logo {
+  width: 80px;
+  margin-bottom: 20px;
+   
+}
+
+.flex {
+  display: flex;
+  align-items: center; /* Aligns items vertically in the center */
+  gap: 10px; /* Adds space between the image and the text */
+}
+
+ 

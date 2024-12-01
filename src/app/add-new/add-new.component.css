@@ -1,0 +1,102 @@
+ 
+.centered-text {
+  display: flex;
+  background-color: #4187d2;
+  color: #fff;
+  padding: 10px;
+  border-radius: 8px 8px 0 0;
+  justify-content: space-between;
+  font-weight: 300px;
+  font-size: 18px;
+  padding-left: 10px !important;
+}
+
+.heading-text{
+  margin-top: 10px !important;
+}
+
+
+
+/* Form Layout */
+.task-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.form-row .full-width {
+  flex: 1;
+  min-width: 150px;
+  min-height: 60px;
+}
+
+/* Dialog Responsiveness */
+@media (max-width: 600px) {
+  .form-row {
+    flex-direction: column;
+  }
+}
+
+/* Dialog Actions Padding */
+mat-dialog-actions {
+  padding-top: 16px;
+}
+
+/* Rounded Dialog */
+.mat-dialog-container {
+  border-radius: 10px !important;
+}
+
+/* Common button styling */
+.action-button {
+  padding: 8px 16px;
+  font-size: 16px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  font-weight: 200px;
+  width: auto;
+  /* Ensures button width fits content */
+  min-width: 80px;
+  /* Minimum width for buttons */
+  cursor: pointer;
+}
+
+/* Background color for buttons */
+.cancel {
+  background-color: red;
+  /* Red background for cancel button */
+  color: white;
+}
+
+.save {
+  background-color: green;
+  /* Blue background for save button */
+  color: white;
+}
+
+/* Optional: Add hover effect for better user interaction */
+.action-button:hover {
+  opacity: 0.8;
+  /* Slight opacity change on hover */
+}
+
+.close-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0;
+  margin-right: 10px;
+}
+
+.close-button:hover {
+  color: #ff6666;
+  /* Slightly different color on hover */
+}

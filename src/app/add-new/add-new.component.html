@@ -1,0 +1,51 @@
+<!-- Dialog Header with Navigation Bar -->
+<div class="dialog-navbar">
+     <div class="centered-text">
+      <div class="heading-text">{{ isEdit ? 'Edit Task' : 'Add New Task' }}</div>
+      <div>
+        <button mat-icon-button matSuffix (click)="saveAndClose()" [tabIndex]="-1">
+          <mat-icon>highlight_off</mat-icon>
+        </button>
+      </div>
+    </div>
+
+ </div>
+
+ 
+<div mat-dialog-content>
+  <form #taskForm="ngForm" class="task-form">
+    <div class="form-row">
+      <mat-form-field class="full-width">
+        <mat-label>Task Name</mat-label>
+        <input matInput [(ngModel)]="taskData.name" name="name" required />
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>Description</mat-label>
+        <textarea matInput [(ngModel)]="taskData.description" name="description"></textarea>
+      </mat-form-field>
+    </div>
+
+
+
+    <div class="form-row">
+      <mat-form-field class="full-width">
+        <mat-label>Status</mat-label>
+        <mat-select [(ngModel)]="taskData.status" name="status">
+          <mat-option value="pending">Pending</mat-option>
+          <mat-option value="continue">In Progress</mat-option>
+          <mat-option value="completed">Completed</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>Additional Information</mat-label>
+        <textarea matInput [(ngModel)]="taskData.additionalInfo" name="additionalInfo"></textarea>
+      </mat-form-field>
+    </div>
+  </form>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button color="warn" class="action-button cancel" (click)="closeDialog()">Cancel</button>
+  <button mat-button color="primary" class="action-button save" (click)="saveTask()">{{ isEdit ? 'Save Changes' : 'Add
+    Task' }}</button>
+</div>

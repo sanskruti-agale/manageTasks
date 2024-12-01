@@ -1,0 +1,69 @@
+<div class="login-container">
+  <!-- Left Section -->
+  <div class="login-left">
+    <img src="assets/logo.png" alt="Workstatus Logo" class="logo" />
+    <h1> Login To Task Management</h1>
+    <p>Please login to continue</p>
+
+    <form #loginForm="ngForm" (ngSubmit)="onLogin()">
+      <!-- Email Field -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          type="email"
+          [(ngModel)]="email"
+          name="email"
+          required
+          email
+          #emailField="ngModel"
+        />
+        <mat-error *ngIf="emailField.invalid && emailField.touched">
+          A valid email is required
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Password Field -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          type="password"
+          [(ngModel)]="password"
+          name="password"
+          required
+          minlength="6"
+          #passwordField="ngModel"
+        />
+        <mat-error *ngIf="passwordField.invalid && passwordField.touched">
+          Password must be at least 6 characters long
+        </mat-error>
+      </mat-form-field>
+
+      
+      <!-- Login Button -->
+      <button mat-raised-button color="primary" class="full-width" type="submit">
+        Login
+      </button>
+
+      <!-- Register Link -->
+      <p class="register-link">
+        Don't have an account? <a routerLink="/register">Create Account</a>
+      </p>
+
+
+
+      <p class="register-link">
+        <a routerLink="/admin-login">Admin Login</a>
+      </p>
+
+      
+
+    </form>
+  </div>
+
+  <!-- Right Section -->
+  <div class="login-right">
+    <img src="assets/ssas-r.png" alt="Dashboard Preview" />
+  </div>
+</div>

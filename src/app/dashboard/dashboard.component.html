@@ -1,0 +1,107 @@
+<div class="dashboard-container">
+    <!-- Responsive Navbar -->
+    <mat-toolbar class="dashboard-navbar">
+      <div class="navbar-left">
+        <img src="assets/logo.png" alt="Logo" class="navbar-logo" />
+         <span style="padding-top: 10px;">Task Management</span>
+      </div>
+      <div class="navbar-right">
+        <button mat-button (click)="openAddNewDialog(false, {})">Add New</button>
+        <button mat-button (click)="logoutclick()" routerLink="/login">Logout</button>
+      </div>
+    </mat-toolbar>
+  
+    <!-- Task Status Cards -->
+    <div class="status-cards">
+ 
+      <mat-card
+        class="status-card pending-card"
+        [ngClass]="{ blink: blinkingCategory === 'pending' }"
+        (click)="showTasks('pending')"
+      >
+        <img src="assets/pending.svg" alt="Pending Icon" width="32" height="32" />
+        <h3>Pending</h3>
+        <p>{{ tasksCount.pending }} Pending</p>
+      </mat-card>
+      <mat-card
+        class="status-card continue-card"
+        [ngClass]="{ blink: blinkingCategory === 'continue' }"
+        (click)="showTasks('continue')"
+      >
+        <img src="assets/cont.png" alt="Pending Icon" width="32" height="32" />
+        <h3>In Progress</h3>
+        <p>{{ tasksCount.continue }}  In Progress</p>
+      </mat-card>
+      <mat-card
+        class="status-card completed-card"
+        [ngClass]="{ blink: blinkingCategory === 'completed' }"
+        (click)="showTasks('completed')"
+      >
+        <img src="assets/success.png" alt="Pending Icon" width="32" height="32" />
+        <h3>Completed</h3>
+        <p>{{ tasksCount.completed }} Completed</p>
+      </mat-card>
+      <mat-card
+        class="status-card deleted-card"
+        [ngClass]="{ blink: blinkingCategory === 'deleted' }"
+        (click)="showTasks('deleted')"
+      >
+        <img src="assets/delete.jpg" alt="Pending Icon" width="28" height="28" />
+        <h3>Deleted</h3>
+        <p>{{ tasksCount.deleted }} Deleted</p>
+      </mat-card>
+    </div>
+    
+  
+    
+    <!-- Task List -->
+<div *ngIf="selectedTasks.length > 0" class="task-list">
+    <h2>Tasks - {{ selectedCategory }}</h2>
+   <table mat-table [dataSource]="selectedTasks" class="mat-elevation-z8">
+  <!-- Task Name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Task Name </th>
+    <td mat-cell *matCellDef="let task"> {{ task.name }} </td>
+  </ng-container>
+
+  <!-- Task Description Column -->
+  <ng-container matColumnDef="description">
+    <th mat-header-cell *matHeaderCellDef> Description </th>
+    <td mat-cell *matCellDef="let task"> {{ task.description }} </td>
+  </ng-container>
+
+  <!-- Task Status Column -->
+  <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef> Status </th>
+    <td mat-cell *matCellDef="let task">
+      <span [ngClass]="{
+        'pending': task.status === 'pending',
+        'continue': task.status === 'continue',
+        'completed': task.status === 'completed',
+        'deleted': task.status === 'deleted'
+      }">
+        {{ task.status }}
+      </span>
+    </td>
+  </ng-container>
+
+  <!-- Action Buttons Column -->
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef> Actions </th>
+    <td mat-cell *matCellDef="let task">
+      <button mat-button color="primary" *ngIf="task.status === 'pending'" (click)="updateStatus(task, 'continue')">Start</button>
+      <button mat-button color="primary" *ngIf="task.status === 'pending' || task.status === 'continue'" (click)="openAddNewDialog(true, task)">Edit</button>
+      <button mat-button color="accent" *ngIf="task.status === 'continue'" (click)="updateStatus(task, 'completed')">Complete</button>
+      <button mat-button color="warn" *ngIf="task.status !== 'deleted'" (click)="deleteTask(task)">Delete</button>
+      <button mat-button color="primary" *ngIf="task.status === 'deleted'" (click)="updateStatus(task, 'pending')">Revert</button>
+    </td>
+  </ng-container>
+
+  <!-- Table Header and Row Definitions -->
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+  </div>
+  
+</div>
