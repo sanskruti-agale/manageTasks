@@ -13,6 +13,7 @@ import { AdminServiceService } from '../services/admin-service.service';
 export class AddNewComponent {
   isEdit: boolean = false;
   taskData: any = {
+    id : null,
     name: '',
     description: '',
     startDate: '',
@@ -33,6 +34,7 @@ export class AddNewComponent {
     const userdata = localStorage.getItem('item'); // Retrieve data from localStorage
     let user = userdata ? JSON.parse(userdata) : []; // Parse or use an empty array as fallback
     this.user = user;
+    this.getUserByEmail(this.user.email)
     debugger
     // Check if it's an edit or add action
     if (data) {
@@ -58,9 +60,11 @@ export class AddNewComponent {
   saveTask(): void {
      debugger
       const taskIndex =  this.user.tasks.findIndex((t: any) => t.id === this.data.taskData.id);
-      if(taskIndex == -1){
+      if(this.data.taskData.id == undefined ||this.data.taskData.id ==  null ){
+        this.taskData.id = this.user.tasks.length
         this.user.tasks[this.user.tasks.length] = this.taskData;
       }else{
+        
         this.user.tasks[taskIndex] = this.taskData;
 
       }
@@ -77,5 +81,18 @@ export class AddNewComponent {
 
   saveAndClose(): void {
     this.matDialogRef.close('');
+  }
+
+  getUserByEmail(email: string): void {
+     this.commonservice.getById(email).subscribe(
+      (data) => {
+        debugger
+          this.user = data[0];
+      
+      },
+      (error) => {
+        console.error('Error fetching user:', error);
+      }
+    );
   }
 }

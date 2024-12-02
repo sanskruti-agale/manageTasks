@@ -6,7 +6,9 @@
          <span style="padding-top: 10px;">Task Management</span>
       </div>
       <div class="navbar-right">
+        
         <button mat-button (click)="openAddNewDialog(false, {})">Add New</button>
+        <span>{{this.user.name}}</span>
         <button mat-button (click)="logoutclick()" routerLink="/login">Logout</button>
       </div>
     </mat-toolbar>
